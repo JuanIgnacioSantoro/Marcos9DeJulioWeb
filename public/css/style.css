@@ -1,0 +1,52 @@
+h1 {
+    padding-top: 2%;
+    color: navy;
+}
+
+.h2, .h3, .p {
+    Color: red;
+}
+
+h1, h2, h3, form, #BaseDeDatos {
+    text-align: center;
+}
+
+#a {
+    text-align: right;
+    text-decoration: none;
+    color:white;   
+}
+
+#ingreso {
+    Color: grey;
+}
+
+#inicio {
+    Color: green;
+}
+
+#finalizado {
+    Color: red;
+}
+
+#banner {
+    width: 50%;
+    display: block;
+    margin: auto;
+}
+
+.background-image {
+    background: linear-gradient(to bottom, white, #003989, black);
+    width: 100vw;
+    height: 110vh;
+    margin: 0;
+}
+
+#icono {
+    height: 5vh;
+    margin: 5px;
+}
+
+nav {
+    margin: auto;
+}
