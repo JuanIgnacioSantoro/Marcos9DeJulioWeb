@@ -12,7 +12,7 @@ h1 {
 }
 
 .listaDeClientes{
-    color: red;
+    color: white;
 }
 
 h1, h2, h3, form, #BaseDeDatos {
@@ -22,7 +22,7 @@ h1, h2, h3, form, #BaseDeDatos {
 #a {
     text-align: right;
     text-decoration: none;
-    color:white;   
+    color:white;
 }
 
 #ingreso {
@@ -66,4 +66,7 @@ h1, h2, h3, form, #BaseDeDatos {
     max-width: 600px;  /* Ajusta el ancho máximo del carrusel */
     margin: 0 auto;    /* Centra el carrusel horizontalmente */
 }
-  
+
+#Tabla {
+    width: 100%;
+}
