@@ -1,68 +1,66 @@
 <!DOCTYPE html>
 <html lang="es">
 <%- include("partials/head") %>
-<body>
-<div class="background-image">
-    <div>
-        <h1>Taller de Marcos 9 Julio</h1>
-        <h2>Juan Santoro</h2>
-        <h3><%= title %></h3>
-        <%- include("partials/header") %>
-        <form id="myForm" action="/guardar-datos" method="post">
-            <label for="nombre">Nombre:</label>
-            <input type="text" id="nombre" name="nombre"><br><br>
-            <label for="apellido">Apellido:</label>
-            <input type="text" id="apellido" name="apellido"><br><br>
-            <label for="contacto">Contacto:</label>
-            <input type="number" id="contacto" name="contacto"><br><br>
-            <label for="ingreso">Ingreso:</label>
-            <input type="datetime-local" id="ingreso" name="ingreso"><br><br>
-            <label for="detalles">Detalles:</label>
-            <input type="text" id="detalles" name="detalles"><br><br>
-            
 
-            <!--
+    <body>
+        <div class="background-image">
+            <div>
+                <%- include("partials/header") %>
+                    <form id="myForm" action="/guardar-datos" method="post">
+                        <label for="nombre">Nombre:</label>
+                        <input type="text" id="nombre" name="nombre"><br><br>
+                        <label for="apellido">Apellido:</label>
+                        <input type="text" id="apellido" name="apellido"><br><br>
+                        <label for="contacto">Contacto:</label>
+                        <input type="number" id="contacto" name="contacto"><br><br>
+                        <label for="ingreso">Ingreso:</label>
+                        <input type="datetime-local" id="ingreso" name="ingreso"><br><br>
+                        <label for="detalles">Detalles:</label>
+                        <input type="text" id="detalles" name="detalles"><br><br>
+
+
+                        <!--
             <label for="inicio">Inicio:</label>
             <input type="datetime-local" id="inicio" name="inicio"><br><br>
             <label for="finalizado">Finalizado:</label>
             <input type="datetime-local" id="finalizado" name="finalizado"><br><br>
             -->
 
-            <input type="submit" value="Registrar" class="btn btn-light">
-        </form>
-    </div>
-    <h1>Lista de clientes</h1>
-    <div id="BaseDeDatos">
-        <button id="BotonCargar" class="btn btn-light">Cargar clientes</button>
-        <table id="Tabla" style="display: none;" class="table table-striped table-primary table-hover">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Ingreso fecha</th>
-                    <th>Ingreso hora</th>
-                    <th>Nombre</th>
-                    <th>Apellido</th>
-                    <th>Detalles</th>
-                    <th>Contacto</th>
-                </tr>
-            </thead>
-            <tbody>
-            </tbody>
-    </div>
-</div>
-<script>
-    document.getElementById('BotonCargar').addEventListener('click', async function() {
-        try {
-            const response = await fetch('/app/basededatos');
-            if (!response.ok) {
-                throw new Error('La conexión no es correcta.');
-            }
-            const clientes = await response.json();
-            const tableBody = document.querySelector('#Tabla tbody');
-            tableBody.innerHTML = ''; // Limpiar tabla existente.
-            clientes.forEach(clientes => {
-                const row = document.createElement('tr');
-                row.innerHTML = `
+                        <input type="submit" value="Registrar" class="btn btn-light">
+                    </form>
+            </div>
+            <h1 class="listaDeClientes">Lista de clientes</h1>
+            <div id="BaseDeDatos">
+                <button id="BotonCargar" class="btn btn-light">Cargar clientes</button>
+                <table id="Tabla" style="display: none;" class="table table-striped table-primary table-hover">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Ingreso fecha</th>
+                            <th>Ingreso hora</th>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>Detalles</th>
+                            <th>Contacto</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+            </div>
+        </div>
+        <script>
+            document.getElementById('BotonCargar').addEventListener('click', async function () {
+                try {
+                    const response = await fetch('/app/basededatos');
+                    if (!response.ok) {
+                        throw new Error('La conexión no es correcta.');
+                    }
+                    const clientes = await response.json();
+                    const tableBody = document.querySelector('#Tabla tbody');
+                    tableBody.innerHTML = ''; // Limpiar tabla existente.
+                    clientes.forEach(clientes => {
+                        const row = document.createElement('tr');
+                        row.innerHTML = `
                     <td>${clientes.id}</td>
                     <td>${clientes.solo_fecha}</td>
                     <td>${clientes.solo_hora}</td>
@@ -71,13 +69,14 @@
                     <td>${clientes.detalles}</td>
                     <td><a href="https://wa.me/+${clientes.contacto}">https://wa.me/+${clientes.contacto}</a></td>
                 `;
-                tableBody.appendChild(row);
+                        tableBody.appendChild(row);
+                    });
+                    document.getElementById('Tabla').style.display = 'table';
+                } catch (error) {
+                    console.error('Hay un problema con la operación fetch.', error);
+                }
             });
-            document.getElementById('Tabla').style.display = 'table';
-        } catch (error) {
-            console.error('Hay un problema con la operación fetch.', error);
-        }
-    });
-</script>
-</body>
+        </script>
+    </body>
+
 </html>

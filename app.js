@@ -32,6 +32,16 @@ app.get('/', (req, res) => {
 });
 
 // Definir otras rutas
+app.get('/trabajos', (req, res) => {
+  res.render('trabajos', { title: 'Galería de trabajos' });
+});
+
+// Definir otras rutas
+app.get('/pedidos', (req, res) => {
+  res.render('pedidos', { title: 'Pedidos' });
+});
+
+// Definir otras rutas
 app.get('/formulario', (req, res) => {
   res.render('formulario', { title: 'Gestión de clientes' });
 });

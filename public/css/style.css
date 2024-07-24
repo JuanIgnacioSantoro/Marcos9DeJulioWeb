@@ -3,8 +3,16 @@ h1 {
     color: navy;
 }
 
-.h2, .h3, .p {
-    Color: red;
+.titulo {
+    color: #003989;
+}
+
+.seccionActual {
+    color: black;
+}
+
+.listaDeClientes{
+    color: red;
 }
 
 h1, h2, h3, form, #BaseDeDatos {
@@ -42,11 +50,20 @@ h1, h2, h3, form, #BaseDeDatos {
     margin: 0;
 }
 
+.background-image-2 {
+    background: linear-gradient(to bottom, black, #003989, black);
+    width: 100vw;
+    height: 110vh;
+    margin: 0;
+}
+
 #icono {
     height: 5vh;
     margin: 5px;
 }
 
-nav {
-    margin: auto;
+.custom-carousel {
+    max-width: 600px;  /* Ajusta el ancho máximo del carrusel */
+    margin: 0 auto;    /* Centra el carrusel horizontalmente */
 }
+  
